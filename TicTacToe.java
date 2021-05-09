@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -13,6 +14,7 @@ public class TicTacToe {
 		}
 		return board;
 	}
+
 	// Show method is Created to Show the current board
 	private void showBoard() {
 		System.out.println(board[1] + "|" + board[2] + "|" + board[3]);
@@ -22,9 +24,9 @@ public class TicTacToe {
 		System.out.println(board[7] + "|" + board[8] + "|" + board[9]);
 	}
 
-	
+	// choose letter user and computer choice
 	private char chooseLetter() {
-		
+		// taking user input
 		System.out.println("Select the letter X or O:");
 		char inputLetter = scan.next().charAt(0);
 		if (inputLetter == 'X') {
@@ -34,10 +36,11 @@ public class TicTacToe {
 			playerChoice = 'O';
 			computerChoice = 'X';
 		} else
-			System.out.println("Invalid symbol....");
+			System.out.println("Invalid symbol...."); // invalid Symbol
 		return playerChoice;
 	}
 
+	// Ability for user to make a move to a desired location in the board
 	private void makeMove() {
 		System.out.println("Select the position from 1-9:");
 		int positionSelector = scan.nextInt();
@@ -70,10 +73,11 @@ public class TicTacToe {
 			board[9] = playerChoice;
 			break;
 		default:
-			System.out.println("invalid choice");
+			System.out.println("Invalid choice");
 		}
 		showBoard();
 	}
+
 	
 	private void isFreeSpaceAvailable() {
 		System.out.println("Enter Desired Location ");
@@ -146,14 +150,27 @@ public class TicTacToe {
 		}
 	}
 
+	private void checkToss() {
+		Random rand = new Random();
+		int toss = rand.nextInt(2);
+		if (toss == 0) {
+			System.out.println("Player is playing!!!");
+		} else {
+			System.out.println("Computer is playing!!");
+		}
+	}
+
 	public static void main(String[] args) {
-		System.out.println("Welcome to TicTacToe Game!!");
-		TicTacToe tictactoeboard = new TicTacToe();
-		tictactoeboard.creatBoard();
-		tictactoeboard.chooseLetter();
+		System.out.println("Welcome to TicTacToe Game!!"); 
+		TicTacToe tictactoeboard = new TicTacToe(); 
+		tictactoeboard.creatBoard(); 
+		tictactoeboard.checkToss();
+		tictactoeboard.chooseLetter(); 
 		tictactoeboard.showBoard(); 
-		tictactoeboard.makeMove(); 
+		tictactoeboard.makeMove();
 		tictactoeboard.isFreeSpaceAvailable(); 
+		tictactoeboard.makeMove(); 
+
 	}
 
 }
